@@ -1,0 +1,10 @@
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationB\bin\Debug\ApplicationB.exe.config
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationB\bin\Debug\ApplicationB.exe
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationB\bin\Debug\ApplicationB.pdb
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationB\bin\Debug\EntityFramework.dll
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationB\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationB\bin\Debug\EntityFramework.xml
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationB\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationB\obj\Debug\ApplicationB.csproj.CoreCompileInputs.cache
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationB\obj\Debug\ApplicationB.exe
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationB\obj\Debug\ApplicationB.pdb

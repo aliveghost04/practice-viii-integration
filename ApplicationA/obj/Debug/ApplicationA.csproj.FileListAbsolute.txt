@@ -1,0 +1,13 @@
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationA\obj\Debug\ApplicationA.ApplicationA.resources
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationA\obj\Debug\ApplicationA.Properties.Resources.resources
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationA\obj\Debug\ApplicationA.csproj.GenerateResource.Cache
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationA\obj\Debug\ApplicationA.csproj.CoreCompileInputs.cache
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationA\bin\Debug\ApplicationA.exe.config
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationA\bin\Debug\ApplicationA.exe
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationA\bin\Debug\ApplicationA.pdb
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationA\bin\Debug\EntityFramework.dll
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationA\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationA\bin\Debug\EntityFramework.xml
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationA\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationA\obj\Debug\ApplicationA.exe
+C:\Users\Erick\Documents\Visual Studio 2017\Projects\ApplicationB\ApplicationA\obj\Debug\ApplicationA.pdb

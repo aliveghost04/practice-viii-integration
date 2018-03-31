@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CheckModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="checks">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="number" Type="int" Nullable="false" />
+    <Property Name="concept" Type="varchar" MaxLength="200" />
+    <Property Name="client_id" Type="int" Nullable="false" />
+    <Property Name="payment_date" Type="datetime" Nullable="false" />
+    <Property Name="amount" Type="decimal" Precision="13" Scale="2" Nullable="false" />
+    <Property Name="amount_in_letters" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="invoice_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="clients">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="cedula" Type="char" MaxLength="11" Nullable="false" />
+  </EntityType>
+  <EntityType Name="invoices">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="amount" Type="decimal" Precision="13" Scale="2" Nullable="false" />
+    <Property Name="client_id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_checks_client_id_clients_id">
+    <End Role="clients" Type="Self.clients" Multiplicity="1" />
+    <End Role="checks" Type="Self.checks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clients">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="checks">
+        <PropertyRef Name="client_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_checks_invoice_id_invoices_id">
+    <End Role="invoices" Type="Self.invoices" Multiplicity="1" />
+    <End Role="checks" Type="Self.checks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="invoices">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="checks">
+        <PropertyRef Name="invoice_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_invoices_client_id_clients_id">
+    <End Role="clients" Type="Self.clients" Multiplicity="1" />
+    <End Role="invoices" Type="Self.invoices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clients">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="invoices">
+        <PropertyRef Name="client_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CheckModelStoreContainer">
+    <EntitySet Name="checks" EntityType="Self.checks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="clients" EntityType="Self.clients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="invoices" EntityType="Self.invoices" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_checks_client_id_clients_id" Association="Self.fk_checks_client_id_clients_id">
+      <End Role="clients" EntitySet="clients" />
+      <End Role="checks" EntitySet="checks" />
+    </AssociationSet>
+    <AssociationSet Name="fk_checks_invoice_id_invoices_id" Association="Self.fk_checks_invoice_id_invoices_id">
+      <End Role="invoices" EntitySet="invoices" />
+      <End Role="checks" EntitySet="checks" />
+    </AssociationSet>
+    <AssociationSet Name="fk_invoices_client_id_clients_id" Association="Self.fk_invoices_client_id_clients_id">
+      <End Role="clients" EntitySet="clients" />
+      <End Role="invoices" EntitySet="invoices" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

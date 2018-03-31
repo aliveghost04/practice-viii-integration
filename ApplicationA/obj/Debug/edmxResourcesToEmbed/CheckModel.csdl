@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CheckModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="checks">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="number" Type="Int32" Nullable="false" />
+    <Property Name="concept" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="client_id" Type="Int32" Nullable="false" />
+    <Property Name="payment_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="amount" Type="Decimal" Precision="13" Scale="2" Nullable="false" />
+    <Property Name="amount_in_letters" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="invoice_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="clients" Relationship="Self.fk_checks_client_id_clients_id" FromRole="checks" ToRole="clients" />
+    <NavigationProperty Name="invoices" Relationship="Self.fk_checks_invoice_id_invoices_id" FromRole="checks" ToRole="invoices" />
+  </EntityType>
+  <EntityType Name="clients">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cedula" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="checks" Relationship="Self.fk_checks_client_id_clients_id" FromRole="clients" ToRole="checks" />
+    <NavigationProperty Name="invoices" Relationship="Self.fk_invoices_client_id_clients_id" FromRole="clients" ToRole="invoices" />
+  </EntityType>
+  <EntityType Name="invoices">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="amount" Type="Decimal" Precision="13" Scale="2" Nullable="false" />
+    <Property Name="client_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="checks" Relationship="Self.fk_checks_invoice_id_invoices_id" FromRole="invoices" ToRole="checks" />
+    <NavigationProperty Name="clients" Relationship="Self.fk_invoices_client_id_clients_id" FromRole="invoices" ToRole="clients" />
+  </EntityType>
+  <Association Name="fk_checks_client_id_clients_id">
+    <End Role="clients" Type="Self.clients" Multiplicity="1" />
+    <End Role="checks" Type="Self.checks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clients">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="checks">
+        <PropertyRef Name="client_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_checks_invoice_id_invoices_id">
+    <End Role="invoices" Type="Self.invoices" Multiplicity="1" />
+    <End Role="checks" Type="Self.checks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="invoices">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="checks">
+        <PropertyRef Name="invoice_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_invoices_client_id_clients_id">
+    <End Role="clients" Type="Self.clients" Multiplicity="1" />
+    <End Role="invoices" Type="Self.invoices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clients">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="invoices">
+        <PropertyRef Name="client_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CheckEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="checks" EntityType="Self.checks" />
+    <EntitySet Name="clients" EntityType="Self.clients" />
+    <EntitySet Name="invoices" EntityType="Self.invoices" />
+    <AssociationSet Name="fk_checks_client_id_clients_id" Association="Self.fk_checks_client_id_clients_id">
+      <End Role="clients" EntitySet="clients" />
+      <End Role="checks" EntitySet="checks" />
+    </AssociationSet>
+    <AssociationSet Name="fk_checks_invoice_id_invoices_id" Association="Self.fk_checks_invoice_id_invoices_id">
+      <End Role="invoices" EntitySet="invoices" />
+      <End Role="checks" EntitySet="checks" />
+    </AssociationSet>
+    <AssociationSet Name="fk_invoices_client_id_clients_id" Association="Self.fk_invoices_client_id_clients_id">
+      <End Role="clients" EntitySet="clients" />
+      <End Role="invoices" EntitySet="invoices" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
